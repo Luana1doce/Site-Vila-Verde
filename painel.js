@@ -1,14 +1,6 @@
 // painel.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    console.log("✅ Usuário logado:", user.email, user.uid);
-  } else {
-    console.log("❌ Nenhum usuário logado");
-  }
-});
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -34,6 +26,22 @@ function fileToBase64(file) {
   });
 }
 
+// 🩵 Funções protegidas só para usuários logados
+function verificarLoginOuSair() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      console.log("✅ Usuário logado:", user.email, user.uid);
+    } else {
+      console.log("❌ Nenhum usuário logado");
+      alert("Você precisa estar logado para acessar o painel.");
+      window.location.href = "login.html"; // Redireciona pro login
+    }
+  });
+}
+
+// Chama ao abrir a página para proteger tudo
+verificarLoginOuSair();
+
 // Salvar Combo
 export async function salvarCombo() {
   const descricao = document.getElementById("description1").value;
@@ -54,18 +62,13 @@ export async function salvarCombo() {
   alert("Combo salvo com sucesso!");
 }
 
-// 💫 Torna a função visível pro botão com onclick
-window.salvarCombo = salvarCombo;
-
-
-
 // Salvar Promoção
 export async function salvarPromocao() {
   const descricao = document.getElementById("promo-txt").value;
   const imgInput = document.getElementById("promo-img");
   let imagemBase64 = null;
 
-    console.log("Combo - Arquivos selecionados:", imgInput.files);
+  console.log("Promoção - Arquivos selecionados:", imgInput.files);
 
   if (imgInput.files.length > 0) {
     imagemBase64 = await fileToBase64(imgInput.files[0]);
@@ -86,7 +89,7 @@ export async function salvarCarrossel() {
     const descricao = document.getElementById(`carousel-txt-${i}`).value;
     let imagemBase64 = null;
 
-      console.log("Combo - Arquivos selecionados:", imgInput.files);
+    console.log(`Carrossel - Arquivos selecionados para slide${i}:`, imgInput.files);
 
     if (imgInput.files.length > 0) {
       imagemBase64 = await fileToBase64(imgInput.files[0]);
@@ -97,6 +100,15 @@ export async function salvarCarrossel() {
       imagem: imagemBase64 || null
     });
   }
+
+  alert("Carrossel salvo com sucesso!");
+}
+
+// 💫 Torna as funções visíveis pro botão com onclick
+window.salvarCombo = salvarCombo;
+window.salvarPromocao = salvarPromocao;
+window.salvarCarrossel = salvarCarrossel;
+
 
   alert("Carrossel salvo com sucesso!");
 }
