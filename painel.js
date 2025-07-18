@@ -2,6 +2,14 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    console.log("✅ Usuário logado:", user.email, user.uid);
+  } else {
+    console.log("❌ Nenhum usuário logado");
+  }
+});
+
 // Configuração do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBgOxpFzvOGuvl02eBZSYovF1J7oNad7hA",
