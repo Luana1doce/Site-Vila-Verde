@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Empório Vila Natural</title>
+    <link rel="stylesheet" href="contato.css">
+     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="contato-page">
+  <header class="header-banner">
+        <h1>Fale Conosco</h1>
+        <p>Estamos aqui para ajudar você!</p>
+    </header>
+
+    <main class="contato">
+        <section class="contato-form">
+            <h2>Envie uma Mensagem</h2>
+            <form id="whatsapp-form">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="seuemail@email.com" required>
+
+    <label for="mensagem">Mensagem:</label>
+    <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+  document.getElementById('whatsapp-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // impede o envio normal do form
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const mensagem = document.getElementById('mensagem').value;
+      
+      const numeroWhatsApp = '551997824-4526'; // <-- coloque aqui o número do Empório com DDD e 55
+      const texto = `Olá! Meu nome é ${nome}, meu e-mail é ${email}. Mensagem: ${mensagem}`;
+      
+      const url = `https://wa.me/${551997824-4526}?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank'); // abre o WhatsApp em nova aba
+  });
+</script>
+
+        </section>
+
+        <section class="contato-info">
+            <h2>Informações de Contato</h2>
+            <p>📍 Avenida dos Estudantes, 956 - Jardim Campos Verdes, Hortolândia - SP, 13186-170</p>
+            <p>📞 (19)7824-4526</p>
+
+            <h3>Localização no Mapa</h3>
+            <div class="mapa">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29406.129421254765!2d-47.23906278916011!3d-22.885094399999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8b9c7414b4ab1%3A0x478dc569636afe54!2sEmp%C3%B3rio%20Vila%20Natural!5e0!3m2!1spt-BR!2sbr!4v1751967284628!5m2!1spt-BR!2sbr" 
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Empório Vila Natural. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
+

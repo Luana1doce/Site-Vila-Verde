@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painel de Edição - Empório Vila Natural</title>
+  <link rel="stylesheet" href="painel.css" />
+</head>
+<body>
+  <header class="painel-header">
+    <h1>Painel de Edição</h1>
+    <p>Bem-vinda! Edite aqui os combos e promoções.</p>
+  </header>
+
+  <main class="painel-container">
+    <section class="painel-section">
+      <h2>Atualizar Combos</h2>
+      <label for="combo-img">Imagem do Combo:</label>
+      <input type="file" id="combo1" accept="image/*" />
+
+      <label for="combo-txt">Descrição do Combo:</label>
+      <textarea id="description1" placeholder="Digite a nova descrição..."></textarea>
+    
+
+      <button onclick="salvarCombo()">Salvar Combo</button>
+    </section>
+
+    <section class="painel-section">
+      <h2>Atualizar Promoção</h2>
+      <label for="promo-img">Imagem da Promoção:</label>
+      <input type="file" id="promo-img" accept="image/*" />
+
+      <label for="promo-txt">Descrição da Promoção:</label>
+      <textarea id="promo-txt" placeholder="Digite a nova promoção..."></textarea>
+
+      <button onclick="salvarPromocao()">Salvar Promoção</button>
+    </section>
+
+    <section class="painel-section">
+      <h2>Atualizar Carrossel - Mais Vendidos</h2>
+      <div id="carousel-editor">
+        <!-- Loop para 5 slides -->
+        <div class="carousel-item-editor">
+          <h3>Slide 1</h3>
+          <label for="carousel-img-1">Imagem:</label>
+          <input type="file" id="carousel-img-1" accept="image/*" />
+          <label for="carousel-txt-1">Descrição:</label>
+          <textarea id="carousel-txt-1" placeholder="Descrição do slide 1..."></textarea>
+        </div>
+        <div class="carousel-item-editor">
+          <h3>Slide 2</h3>
+          <label for="carousel-img-2">Imagem:</label>
+          <input type="file" id="carousel-img-2" accept="image/*" />
+          <label for="carousel-txt-2">Descrição:</label>
+          <textarea id="carousel-txt-2" placeholder="Descrição do slide 2..."></textarea>
+        </div>
+        <div class="carousel-item-editor">
+          <h3>Slide 3</h3>
+          <label for="carousel-img-3">Imagem:</label>
+          <input type="file" id="carousel-img-3" accept="image/*" />
+          <label for="carousel-txt-3">Descrição:</label>
+          <textarea id="carousel-txt-3" placeholder="Descrição do slide 3..."></textarea>
+        </div>
+        <div class="carousel-item-editor">
+          <h3>Slide 4</h3>
+          <label for="carousel-img-4">Imagem:</label>
+          <input type="file" id="carousel-img-4" accept="image/*" />
+          <label for="carousel-txt-4">Descrição:</label>
+          <textarea id="carousel-txt-4" placeholder="Descrição do slide 4..."></textarea>
+        </div>
+        <div class="carousel-item-editor">
+          <h3>Slide 5</h3>
+          <label for="carousel-img-5">Imagem:</label>
+          <input type="file" id="carousel-img-5" accept="image/*" />
+          <label for="carousel-txt-5">Descrição:</label>
+          <textarea id="carousel-txt-5" placeholder="Descrição do slide 5..."></textarea>
+        </div>
+      </div>
+
+      <button onclick="salvarCarrossel()">Salvar Carrossel</button>
+    </section>
+  </main>
+
+  <footer class="painel-footer">
+    <p>Empório Vila Natural © 2025</p>
+  </footer>
+
+  <!-- Firebase Compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Config Firebase (substitua pelos seus dados)
+    const firebaseConfig = {
+      apiKey: "AIzaSyBgOxpFzvOGuvl02eBZSYovF1J7oNad7hA",
+      authDomain: "emporiovila-6d34f.firebaseapp.com",
+      projectId: "emporiovila-6d34f",
+      storageBucket: "emporiovila-6d34f.appspot.com",
+      messagingSenderId: "747350863563",
+      appId: "1:747350863563:web:a56bf9782663313359b54e"
+    };
+
+    // Inicializa Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // Função para converter arquivo em base64 (para armazenar imagem como string)
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Salvar combo
+    async function salvarCombo() {
+      const descricao = document.getElementById("combo-txt").value;
+      const imgInput = document.getElementById("combo-img");
+      let imagemBase64 = null;
+
+      if (imgInput.files.length > 0) {
+        try {
+          imagemBase64 = await fileToBase64(imgInput.files[0]);
+        } catch (error) {
+          alert("Erro ao ler a imagem do combo: " + error);
+          return;
+        }
+      }
+
+      db.collection("combos").doc("combo1").set({
+        descricao: descricao,
+        imagem: imagemBase64
+      })
+        .then(() => alert("Combo salvo com sucesso!"))
+        .catch((error) => alert("Erro ao salvar combo: " + error.message));
+    }
+
+    // Salvar promoção
+    async function salvarPromocao() {
+      const descricao = document.getElementById("promo-txt").value;
+      const imgInput = document.getElementById("promo-img");
+      let imagemBase64 = null;
+
+      if (imgInput.files.length > 0) {
+        try {
+          imagemBase64 = await fileToBase64(imgInput.files[0]);
+        } catch (error) {
+          alert("Erro ao ler a imagem da promoção: " + error);
+          return;
+        }
+      }
+
+      db.collection("promocoes").doc("promo1").set({
+        descricao: descricao,
+        imagem: imagemBase64
+      })
+        .then(() => alert("Promoção salva com sucesso!"))
+        .catch((error) => alert("Erro ao salvar promoção: " + error.message));
+    }
+
+    // Salvar carrossel
+    async function salvarCarrossel() {
+      const promises = [];
+
+      for (let i = 1; i <= 5; i++) {
+        const imgInput = document.getElementById(`carousel-img-${i}`);
+        const descricao = document.getElementById(`carousel-txt-${i}`).value;
+        let imagemBase64 = null;
+
+        if (imgInput.files.length > 0) {
+          try {
+            imagemBase64 = await fileToBase64(imgInput.files[0]);
+          } catch (error) {
+            alert(`Erro ao ler a imagem do slide ${i}: ` + error);
+            return;
+          }
+        }
+
+        // Salvar cada slide no Firestore na coleção 'carrossel', documento 'slideX'
+        const p = db.collection("carrossel").doc(`slide${i}`).set({
+          descricao: descricao,
+          imagem: imagemBase64
+        });
+        promises.push(p);
+      }
+
+      Promise.all(promises)
+        .then(() => alert("Carrossel salvo com sucesso!"))
+        .catch((error) => alert("Erro ao salvar carrossel: " + error.message));
+    }
+  </script>
+  <script type="module" src="painel.js" defer></script>
+
+</body>
+</html>

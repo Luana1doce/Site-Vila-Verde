@@ -1,0 +1,135 @@
+body
+
+{
+/* Banner no topo */
+.header-banner {
+    background-image: url('img/capa.sobre.nos.png'); /* coloque uma imagem aqui */
+     background-color:#ffe0e0;
+    background-size: cover;
+    background-position: center;
+    padding: 150px 20px;
+}
+
+}
+
+/* Conteúdo Sobre Nós */
+.sobre-nos {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+    color: #333;
+    line-height: 1.8;
+}
+
+.sobre-nos h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8em;
+    color: #0b5c00;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.sobre-nos p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sobre-nos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sobre-nos li {
+    font-family: 'Merriweather', serif;
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px;
+}
+
+.sobre-nos li::before {
+    content: "✔️";
+    position: absolute;
+    left: 0;
+    color: #0b5c00;
+}
+
+/* Footer */
+footer {
+    background-color: #0b5c00;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 50px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .header-banner {
+        padding: 60px 15px;
+    }
+
+    .header-banner h1 {
+        font-size: 2.5em;
+    }
+
+    .sobre-nos h2 {
+        font-size: 2.2em;
+    }
+}
+
+
+footer {
+    background-color: #162e00; /* mesma cor da navbar */
+    color: #fff;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 50px;
+}
+
+footer p {
+    font-family: 'Merriweather', serif;
+    font-size: 1.1em;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.footer-content div {
+    flex: 1 1 300px;
+    margin: 10px;
+}
+
+.footer-logo h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.footer-social a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 8px;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #000; /* muda a cor ao passar o mouse */
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 10px;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
