@@ -22,6 +22,7 @@ async function carregarDados() {
     const comboSnap = await getDoc(comboRef);
     if (comboSnap.exists()) {
       const data = comboSnap.data();
+      console.log("URL da imagem do combo:", data.imagem);
       document.getElementById("combo1").src = (data.imagem ? data.imagem + "?v=" + Date.now() : 'img/Combo1.png');
       document.getElementById("description1").textContent = data.descricao || '';
     }
