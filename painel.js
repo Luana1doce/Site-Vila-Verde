@@ -23,7 +23,7 @@ async function uploadParaCloudinary(file) {
   const url = "https://api.cloudinary.com/v1_1/doolfmxy2/image/upload";
   const formData = new FormData();
   formData.append("file", file);
-  formData.append("upload_preset", "ml_padrão"); // Seu preset criado
+  formData.append("upload_preset", "painel_upload"); // Seu preset criado
 
   const response = await fetch(url, {
     method: "POST",
