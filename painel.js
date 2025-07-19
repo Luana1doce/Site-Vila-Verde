@@ -1,6 +1,7 @@
 // painel.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -15,6 +16,7 @@ const firebaseConfig = {
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app); // Novo Auth
 
 // 🩵 Upload para Cloudinary
 async function uploadParaCloudinary(file) {
@@ -31,7 +33,7 @@ async function uploadParaCloudinary(file) {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.error.message || "Erro no upload para Cloudinary");
+    throw new Error(data.error?.message || "Erro no upload para Cloudinary");
   }
 
   return data.secure_url; // URL segura da imagem
@@ -39,7 +41,7 @@ async function uploadParaCloudinary(file) {
 
 // 🩵 Protege o painel
 function verificarLoginOuSair() {
-  firebase.auth().onAuthStateChanged((user) => {
+  onAuthStateChanged(auth, (user) => {
     if (user) {
       console.log("✅ Usuário logado:", user.email, user.uid);
     } else {
@@ -135,3 +137,4 @@ export async function salvarCarrossel() {
 window.salvarCombo = salvarCombo;
 window.salvarPromocao = salvarPromocao;
 window.salvarCarrossel = salvarCarrossel;
+
