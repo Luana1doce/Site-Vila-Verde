@@ -1,9 +1,8 @@
-// painel.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
 import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 
-// Firebase Config
+// Configuração do Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyBgOxpFzvOGuvl02eBZSYovF1J7oNad7hA",
   authDomain: "emporiovila-6d34f.firebaseapp.com",
@@ -33,16 +32,19 @@ async function uploadParaCloudinary(file) {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.error?.message || "Erro no upload Cloudinary");
+    throw new Error(data.error?.message || "Erro no upload para Cloudinary");
   }
 
   return data.secure_url;
 }
 
-// Protege painel
+// Protege o painel
 function verificarLoginOuSair() {
   onAuthStateChanged(auth, (user) => {
-    if (!user) {
+    if (user) {
+      console.log("✅ Usuário logado:", user.email, user.uid);
+    } else {
+      console.log("❌ Nenhum usuário logado");
       alert("Você precisa estar logado para acessar o painel.");
       window.location.href = "login.html";
     }
@@ -60,17 +62,19 @@ export async function salvarCombo() {
     try {
       imageUrl = await uploadParaCloudinary(imgInput.files[0]);
     } catch (err) {
-      alert("Erro ao enviar imagem do combo.");
-      console.error(err);
+      console.error("❌ Erro no upload para Cloudinary:", err);
+      alert("Erro ao enviar a imagem. Tente novamente.");
       return;
     }
   }
 
   await setDoc(doc(db, "combos", "combo1"), {
-    descricao,
-    imagem: imageUrl || null
+    descricao: descricao,
+    imagem: imageUrl || null,
+    versao: Date.now()
   });
-  alert("✅ Combo atualizado com sucesso!");
+
+  alert("✅ Combo salvo com sucesso!");
 }
 
 // Salvar Promoção
@@ -83,17 +87,19 @@ export async function salvarPromocao() {
     try {
       imageUrl = await uploadParaCloudinary(imgInput.files[0]);
     } catch (err) {
-      alert("Erro ao enviar imagem da promoção.");
-      console.error(err);
+      console.error("❌ Erro no upload para Cloudinary:", err);
+      alert("Erro ao enviar a imagem. Tente novamente.");
       return;
     }
   }
 
   await setDoc(doc(db, "promocoes", "promo1"), {
-    descricao,
-    imagem: imageUrl || null
+    descricao: descricao,
+    imagem: imageUrl || null,
+    versao: Date.now()
   });
-  alert("✅ Promoção atualizada com sucesso!");
+
+  alert("✅ Promoção salva com sucesso!");
 }
 
 // Salvar Carrossel
@@ -107,19 +113,26 @@ export async function salvarCarrossel() {
       try {
         imageUrl = await uploadParaCloudinary(imgInput.files[0]);
       } catch (err) {
-        alert(`Erro ao enviar imagem do slide ${i}.`);
-        console.error(err);
+        console.error(`❌ Erro no upload do slide${i}:`, err);
+        alert(`Erro ao enviar a imagem do slide ${i}.`);
         return;
       }
     }
 
     await setDoc(doc(db, "carrossel", `slide${i}`), {
-      descricao,
-      imagem: imageUrl || null
+      descricao: descricao,
+      imagem: imageUrl || null,
+      versao: Date.now()
     });
   }
-  alert("✅ Carrossel atualizado com sucesso!");
+
+  alert("✅ Carrossel salvo com sucesso!");
 }
+
+// Torna visíveis pro botão onclick
+window.salvarCombo = salvarCombo;
+window.salvarPromocao = salvarPromocao;
+window.salvarCarrossel = salvarCarrossel;
 
 window.salvarCombo = salvarCombo;
 window.salvarPromocao = salvarPromocao;
