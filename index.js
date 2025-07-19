@@ -67,3 +67,4 @@ async function carregarDados() {
 
 // ✅ Chama carregarDados quando o DOM estiver pronto
 window.addEventListener('DOMContentLoaded', carregarDados);
+
