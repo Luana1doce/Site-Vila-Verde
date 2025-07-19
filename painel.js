@@ -1,6 +1,6 @@
 // painel.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -16,17 +16,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Função para converter arquivo em Base64
-function fileToBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = (error) => reject(error);
-    reader.readAsDataURL(file);
+// 🩵 Upload para Cloudinary
+async function uploadParaCloudinary(file) {
+  const url = "https://api.cloudinary.com/v1_1/doolfmxy2/image/upload";
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "ml_padrão"); // Seu preset criado
+
+  const response = await fetch(url, {
+    method: "POST",
+    body: formData
   });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error.message || "Erro no upload para Cloudinary");
+  }
+
+  return data.secure_url; // URL segura da imagem
 }
 
-// 🩵 Funções protegidas só para usuários logados
+// 🩵 Protege o painel
 function verificarLoginOuSair() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -38,25 +49,29 @@ function verificarLoginOuSair() {
     }
   });
 }
-
-// Chama ao abrir a página para proteger tudo
 verificarLoginOuSair();
 
 // Salvar Combo
 export async function salvarCombo() {
   const descricao = document.getElementById("description1").value;
   const imgInput = document.getElementById("combo1");
-  let imagemBase64 = null;
+  let imageUrl = null;
 
   console.log("Combo - Arquivos selecionados:", imgInput.files);
 
   if (imgInput.files.length > 0) {
-    imagemBase64 = await fileToBase64(imgInput.files[0]);
+    try {
+      imageUrl = await uploadParaCloudinary(imgInput.files[0]);
+    } catch (err) {
+      console.error("❌ Erro no upload para Cloudinary:", err);
+      alert("Erro ao enviar a imagem. Tente novamente.");
+      return;
+    }
   }
 
   await setDoc(doc(db, "combos", "combo1"), {
     descricao: descricao,
-    imagem: imagemBase64 || null
+    imagem: imageUrl || null
   });
 
   alert("Combo salvo com sucesso!");
@@ -66,17 +81,23 @@ export async function salvarCombo() {
 export async function salvarPromocao() {
   const descricao = document.getElementById("promo-txt").value;
   const imgInput = document.getElementById("promo-img");
-  let imagemBase64 = null;
+  let imageUrl = null;
 
   console.log("Promoção - Arquivos selecionados:", imgInput.files);
 
   if (imgInput.files.length > 0) {
-    imagemBase64 = await fileToBase64(imgInput.files[0]);
+    try {
+      imageUrl = await uploadParaCloudinary(imgInput.files[0]);
+    } catch (err) {
+      console.error("❌ Erro no upload para Cloudinary:", err);
+      alert("Erro ao enviar a imagem. Tente novamente.");
+      return;
+    }
   }
 
   await setDoc(doc(db, "promocoes", "promo1"), {
     descricao: descricao,
-    imagem: imagemBase64 || null
+    imagem: imageUrl || null
   });
 
   alert("Promoção salva com sucesso!");
@@ -87,30 +108,30 @@ export async function salvarCarrossel() {
   for (let i = 1; i <= 5; i++) {
     const imgInput = document.getElementById(`carousel-img-${i}`);
     const descricao = document.getElementById(`carousel-txt-${i}`).value;
-    let imagemBase64 = null;
+    let imageUrl = null;
 
     console.log(`Carrossel - Arquivos selecionados para slide${i}:`, imgInput.files);
 
     if (imgInput.files.length > 0) {
-      imagemBase64 = await fileToBase64(imgInput.files[0]);
+      try {
+        imageUrl = await uploadParaCloudinary(imgInput.files[0]);
+      } catch (err) {
+        console.error(`❌ Erro no upload do slide${i}:`, err);
+        alert(`Erro ao enviar a imagem do slide ${i}.`);
+        return;
+      }
     }
 
     await setDoc(doc(db, "carrossel", `slide${i}`), {
       descricao: descricao,
-      imagem: imagemBase64 || null
+      imagem: imageUrl || null
     });
   }
 
   alert("Carrossel salvo com sucesso!");
 }
 
-// 💫 Torna as funções visíveis pro botão com onclick
+// 💫 Torna visíveis pro botão onclick
 window.salvarCombo = salvarCombo;
 window.salvarPromocao = salvarPromocao;
 window.salvarCarrossel = salvarCarrossel;
-
-
-  alert("Carrossel salvo com sucesso!");
-}
-
-
