@@ -16,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function carregarDados() {
+  console.log("Função carregarDados chamada");
   try {
     // Combos
     const comboRef = doc(db, "combos", "combo1");
