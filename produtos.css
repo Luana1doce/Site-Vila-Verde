@@ -126,3 +126,18 @@ footer {
     font-size: 0.95em;
 }
 
+.Banner {
+  display: block; 
+}
+
+.Banner img {
+display: flex;
+margin: 100px;
+}
+
+.Banner h2 {
+ text-align: center;
+ font-size: 3em;
+ color:#0b5c00;
+}
+
