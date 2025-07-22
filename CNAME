@@ -1,4 +1,1 @@
-echo emporiovilanatural.com.br > CNAME
-git add CNAME
-git commit -m "Adiciona CNAME com domínio personalizado"
-git push
+emporiovilanatural.com.br
