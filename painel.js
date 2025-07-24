@@ -4,7 +4,7 @@ import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 
 // Configuração do Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyBgOxpFzvOGuvl02eBZSYovF1J7oNad7hA",
+  apiKey: "AIzaSyDappoTB5pk0X5Xavz1FVtL8a3zR9hkZMI",
   authDomain: "emporiovila-6d34f.firebaseapp.com",
   projectId: "emporiovila-6d34f",
   storageBucket: "emporiovila-6d34f.appspot.com",
