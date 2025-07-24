@@ -1,0 +1,4 @@
+# Ignorar arquivos de configuração com chaves e segredos
+.env
+firebase-config.js
+*.env
