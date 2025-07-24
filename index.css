@@ -1,14 +1,16 @@
+/* BASE */
 body {
-   background-color: #ffe0e0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+  background-color: #ffe0e0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Merriweather', serif;
-
-
+  margin: 0;
+  padding: 0;
 }
 
+/* CABEÇALHO */
 header {
   font-family: 'Merriweather', serif;
   background-color: #000;
@@ -21,422 +23,140 @@ nav {
   background-color: #0b5c00;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 20px 0;
-  font-size: 1.6em; /* aumenta um pouco a letra */
+  font-size: 1.2em;
 }
 
 nav a {
   color: #ffffff;
   text-decoration: none;
-  margin: 0 40px;
+  margin: 0 20px;
   font-weight: bold;
-} 
-nav a:hover {
-  color: #ffffff; /* muda a cor do texto no hover */
-  background-color: #ffd0ef; /* opcional: fundo preto no hover */
-  padding: 5px 10px; /* opcional: dá um “ar de botão” */
-  border-radius: 5px; /* cantos arredondados */
-  transition: all 0.3s ease; /* efeito suave */
+  transition: all 0.3s ease;
 }
 
+nav a:hover {
+  color: #ffffff;
+  background-color: #ffd0ef;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
 
+/* CONTEÚDO */
 .container {
   background-color: #ffe0e0;
   padding: 30px;
   min-height: 500px;
-  font-size: 1.2em; /* aqui você ajusta o tamanho da letra */
+  font-size: 1.1em;
 }
+
 main {
-  max-width: 1200px; /* largura máxima para o texto não ficar esticado */
-  margin: 0 auto;   /* centraliza horizontalmente */
-  padding: 20px;    /* espaço interno para o texto respirar */
-  text-align: center; /* opcional: centraliza o texto */
-  font-size: 1.5em;
-}
-
-footer {
-  text-align: center; /* garante que tudo no footer fique centralizado */
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
+  text-align: center;
+  font-size: 1.4em;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column; /* empilha os links um abaixo do outro */
-    padding: 20px 0;
-  }
-
-  nav a {
-    margin: 10px 0; /* espaço entre os links */
-    font-size: 18px; /* aumenta um pouco a letra no mobile */
-  }
-
-  .container {
-    padding: 20px;
-  }
-
-  main {
-    text-align: center; /* centraliza o texto no mobile */
-    padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  body {
-    font-size: 16px; /* letras um pouco maiores para celular */
-  }
-
-  nav a {
-    font-size: 16px;
-  }
-
-/*estilo carrosel*/
-}
+/* CARROSSEL */
 .carousel {
-    width: 100%;
-    margin: 20px auto;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .carousel h2 {
- font-size: 3em;
- color: #0b5c00;
+  font-size: 2.2em;
+  color: #0b5c00;
 }
+
 .carousel-track {
-    display: flex;
-    animation: scroll 10s linear infinite;
+  display: flex;
+  animation: scroll 10s linear infinite;
 }
 
 .carousel-track img {
-    width: 800px;
-    margin: 0 10px;
-    border-radius: 8px;
-}
-  
-@keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-}
- 
-/*responsividade carrossel*/
-@media (max-width: 768px) {
-    .carousel-track img {
-        width: 200px; /* imagens menores no celular */
-    }
+  width: 100%;
+  max-width: 800px;
+  margin: 0 10px;
+  border-radius: 8px;
 }
 
-@media (max-width: 480px) {
-    .carousel-track img {
-        width: 150px; /* ainda menores em telas bem pequenas */
-    }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
+
+/* RECEITAS */
 .receitas {
-    background-color: #ffe0e0;
-    text-align: center;
-    padding: 30px;
-    border-radius: 10px;
-    margin: 20px auto;
-    width: 100%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffe0e0;
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .receitas h2 {
-    color: #0b5c00;
-    margin-bottom: 10px;
-    font-size: 3em;
+  color: #0b5c00;
+  margin-bottom: 10px;
+  font-size: 2.2em;
 }
 
 .receitas p {
-    color: #555;
-    margin-bottom: 20px;
+  color: #555;
+  margin-bottom: 20px;
+  font-size: 1.1em;
 }
+
 .receitas b {
-    color: #555;
-    margin-bottom: 20px;
-    font-size: 1.5em;
-}
-.btn-pdf {
-    background-color: #024704;
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 20px;
-    border-radius: 6px;
-    font-weight: bold;
+  color: #555;
+  font-size: 1.3em;
 }
 
-.btn-pdf:hover {
-    background-color: #024704;
-}
-/* Responsivo */
-@media (max-width: 768px) {
-    .receitas {
-        width: 90%;
-        padding: 20px;
-    }
-
-    .receitas h2 {
-        font-size: 1.6rem;
-    }
-
-    .receitas p {
-        font-size: 1rem;
-    }
-
-    .btn-pdf {
-        padding: 10px 16px;
-        font-size: 0.95rem;
-    }
-
-  }
-
-@media (max-width: 480px) {
-    .receitas {
-        padding: 15px;
-    }
-
-    .receitas h2 {
-        font-size: 1.4rem;
-    }
-
-    .receitas p {
-        font-size: 0.95rem;
-    }
-
-    .btn-pdf {
-        width: 100%;
-        font-size: 1rem;
-    }
-  }.receitas img {
-    width: 100%; /* imagem ocupa toda a largura do container */
-    max-width: 900px; /* limita a largura máxima em telas grandes */
-    height: auto; /* mantém a proporção da imagem */
-    border-radius: 10px; /* cantos arredondados (opcional) */
-    display: block;
-    margin: 0 auto 20px; /* centraliza e dá espaço abaixo */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* sombra suave */
-}
-
-/* 📱 Responsivo (para telas pequenas) */
-@media (max-width: 768px) {
-    .receitas img {
-        max-width: 90%; /* em tablets ocupa quase toda a largura */
-    }
-}
-
-@media (max-width: 480px) {
-    .receitas img {
-        max-width: 100%; /* em celulares ocupa toda a largura */
-    }
-}
-
-#cookie-box {
-  position: fixed;
-  bottom: 20px;
-  right: 80px;
-  max-width: 350px;
-  background-color: #0b5c00;
-  color: #ffffff;
-  padding: 20px;
+.receitas img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
   border-radius: 10px;
-  box-shadow: 0 6px 12px rgb(0 0 0 / 0.2);
-  font-family: Arial, sans-serif;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: block;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-#cookie-box > div:last-child {
-  align-self: flex-end;
-}
-
-#accept-cookies-btn {
-  background-color: #fff;
-  color: #000;
-  border: none;
-  padding: 10px 18px;
+.btn-pdf {
+  background-color: #024704;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 20px;
   border-radius: 6px;
   font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgb(0 0 0 / 0.15);
-  transition: background-color 0.3s ease;
+  display: inline-block;
 }
 
-#accept-cookies-btn:hover {
-  background-color: #f0f0f0;
-}
-
-/* Responsividade para telas pequenas */
-@media (max-width: 400px) {
-  #cookie-box {
-    right: 10px;
-    bottom: 10px;
-    max-width: 90vw;
-    padding: 15px;
-  }
-}
-
+/* COMBOS */
 .Combos {
   background-color: #ffe0e0;
-  text-align: center;      /* Centraliza o título */
+  text-align: center;
 }
 
 .Combos img {
-  display: inline-block;   /* Faz as imagens ficarem lado a lado */
-  max-width: 1100px;        /* Limita o tamanho */
+  display: inline-block;
+  max-width: 100%;
   height: auto;
   margin: 10px;
 }
 
 .Combos h2 {
   color: #0b5c00;
-  font-size: 3em;}
-
-.footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    font-size: 1.2em;
+  font-size: 2.5em;
 }
 
-.footer-content div {
-    flex: 1 1 250px;
-    margin: 10px;
-}
-
-.footer-logo h3 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.footer-social a {
-    display: inline-block;
-    margin-right: 10px;
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-size: 1.2em; /* corrigido ponto no lugar da vírgula */
-}
-
-.footer-social a:hover {
-    color: #000;
-}
-
-footer {
-    text-align: center;
-    background-color: #003300; /* ou a cor que está no fundo */
-    color: #fff;
-    padding: 20px;
-}
-
-footer a {
-    color: #fff; /* para o @ ficar da mesma cor do texto */
-    text-decoration: none;
-}
-
-.footer-contact a:hover {
-    text-decoration: underline; /* opcional: efeito no hover */
-}
-
-.footer-contact p {
-    margin: 5px 0;
-    font-size: 1.2em; /* corrigido ponto no lugar da vírgula */
-}
-
-.footer-bottom {
-   display: block; 
-    flex-basis: 100%;       /* força ele a quebrar linha no flex */
-    text-align: center;     /* centraliza o texto */
-    width: 100%;            /* ocupa a largura toda */
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
-    padding-top: 10px;
-    font-size: 1.3em;
-    margin-top: 20px;
-}
-
-
-
-/* Títulos gerais (H1, H2, H3) */
-h1, h3 {
-    font-family: 'lora', cursive; /* Fonte manuscrita */
-    font-weight: 700;
-    color: #162e00 /* tom mais escuro e elegante */
-    
-}
-h4 {
-font-family: 'lora', cursive; /* Fonte manuscrita */
-    font-weight: 700;
-    color: #ffffff; /* tom mais escuro e elegante */
-    text-align: center; 
-    font-size: 2em;
-}
-
-/* Tamanhos específicos */
-h1 {
-    font-size: 4em; /* maior destaque para o h1 */
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 2.2em;
-    margin-bottom: 15px;
-}
-
-h3 {
-    font-size: 1.8em;
-    margin-bottom: 10px;
-}
-
-
-/*botão instagram*/
-
-.instagram-box {
-  position: fixed;
-  left: 10px; /* fixa no lado esquerdo */
-  bottom: 20px; /* distância da parte inferior */
-  background-color: #fcaddb;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  max-width: 300px;
-  text-align: center;
-  z-index: 9999;
-  font-family: Arial, sans-serif;
-}
-
-.instagram-box img {
-  width: 40px;
-  height: 40px;
-  margin-bottom: 10px;
-}
-
-.instagram-box p {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.btn-instagram {
-  display: inline-block;
-  background-color: #E1306C; /* rosa Instagram */
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn-instagram:hover {
-  background-color: #C13584; /* tom mais escuro ao passar o mouse */
-}
-
-
-/*promoções*/
+/* PROMOÇÕES */
 .promocoes {
   background-color: #ffe0e0;
   padding: 50px 20px;
@@ -445,23 +165,22 @@ h3 {
 
 .promocoes h2 {
   color: #0b5c00;
-  font-size: 3em;
+  font-size: 2.5em;
   margin-bottom: 30px;
-  font-family: 'Merriweather', serif;
 }
 
 .promo-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .promo-card {
   background: #ffffff;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  overflow: hidden;
-  max-width: 800px;
+  max-width: 400px;
   width: 90%;
   transition: transform 0.3s ease;
 }
@@ -473,7 +192,6 @@ h3 {
 .promo-card img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
 .promo-text {
@@ -482,14 +200,12 @@ h3 {
 
 .promo-text h3 {
   color: #b67e4f;
-  font-size: 1.8em;
-  margin-bottom: 15px;
+  font-size: 1.5em;
 }
 
 .promo-text p {
-  font-size: 1.1em;
+  font-size: 1em;
   color: #555;
-  margin-bottom: 20px;
 }
 
 .promo-text button {
@@ -500,12 +216,191 @@ h3 {
   border-radius: 8px;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .promo-text button:hover {
   background-color: #b67e4f;
 }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  background-color: #003300;
+  color: #fff;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content div {
+  flex: 1 1 250px;
+  margin: 10px;
+}
+
+.footer-logo h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+.footer-social a {
+  margin-right: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.footer-social a:hover {
+  color: #000;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: 20px;
+  padding-top: 10px;
+  font-size: 1em;
+}
+
+/* COOKIES */
+#cookie-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 90%;
+  background-color: #0b5c00;
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+#accept-cookies-btn {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#accept-cookies-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* BOTÃO INSTAGRAM */
+.instagram-box {
+  position: fixed;
+  left: 10px;
+  bottom: 20px;
+  background-color: #fcaddb;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 90%;
+  text-align: center;
+  z-index: 9999;
+}
+
+.instagram-box img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.instagram-box p {
+  font-size: 14px;
+  color: #333;
+}
+
+.btn-instagram {
+  background-color: #E1306C;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-instagram:hover {
+  background-color: #C13584;
+}
+
+/* TÍTULOS */
+h1, h2, h3, h4 {
+  font-family: 'Lora', cursive;
+  font-weight: 700;
+  color: #162e00;
+  text-align: center;
+}
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.6em; }
+h4 { font-size: 1.4em; color: #fff; }
+
+/* RESPONSIVO GERAL */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+  }
+
+  nav a {
+    margin: 10px 0;
+    font-size: 1em;
+  }
+
+  h1 { font-size: 2.2em; }
+  h2 { font-size: 1.6em; }
+  h3 { font-size: 1.4em; }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .promo-container {
+    flex-direction: column;
+  }
+
+  .carousel-track img {
+    width: 90%;
+  }
+
+  .btn-pdf {
+    width: 100%;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.4em; }
+
+  .receitas, .container, main {
+    padding: 15px;
+  }
+
+  .instagram-box {
+    padding: 15px;
+  }
+
+  .promo-card {
+    width: 100%;
+  }
+}
+
 
 
 
