@@ -285,8 +285,10 @@ footer {
   z-index: 9999;
   font-family: Arial, sans-serif;
 }
-#cookie-box > div:last-child {
-  align-self: flex-end;}
+#cookie-box img {
+width: 40px;
+  height: 40px;
+  margin-bottom: 10px}
 
 #accept-cookies-btn {
   background-color: #fff;
