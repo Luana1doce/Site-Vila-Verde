@@ -300,6 +300,15 @@ footer {
 #accept-cookies-btn:hover {
   background-color: #f0f0f0;
 }
+/* Responsividade para telas pequenas */
+@media (max-width: 400px) {
+  #cookie-box {
+    right: 10px;
+    bottom: 10px;
+    max-width: 90vw;
+    padding: 15px;
+  }
+}
 
 /* BOTÃO INSTAGRAM */
 .instagram-box {
@@ -336,6 +345,15 @@ footer {
 
 .btn-instagram:hover {
   background-color: #C13584;
+}
+/* Responsividade para telas pequenas */
+@media (max-width: 400px) {
+  #instagram-box {
+    right: 10px;
+    bottom: 10px;
+    max-width: 90vw;
+    padding: 15px;
+  }
 }
 
 /* TÍTULOS */
