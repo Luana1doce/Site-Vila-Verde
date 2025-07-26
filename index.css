@@ -277,7 +277,7 @@ footer {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  max-width: 90%;
+  max-width: 250px;
   background-color: #0b5c00;
   color: #ffffff;
   padding: 20px;
@@ -285,6 +285,8 @@ footer {
   z-index: 9999;
   font-family: Arial, sans-serif;
 }
+#cookie-box > div:last-child {
+  align-self: flex-end;}
 
 #accept-cookies-btn {
   background-color: #fff;
