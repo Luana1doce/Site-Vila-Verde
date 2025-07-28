@@ -141,4 +141,23 @@ font-family: dancing script, cursive;
  font-size: 3em;
  color:#0b5c00;
 }
+@media (max-width: 768px) {
+  .Banner h2 {
+    font-size: 1.5rem;
+  }
+}
 
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+  .Banner {
+    padding: 10px;
+  }
+
+  .Banner h2 {
+    font-size: 1.2rem;
+  }
+
+  .Banner img {
+    border-radius: 5px;
+  }
+}
