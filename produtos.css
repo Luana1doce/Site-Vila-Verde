@@ -7,7 +7,7 @@ body {
 }
 
 header.header-banner {
-    background-color: #000000; /* preto elegante */
+    background-color: #000000;
     color: #ffffff;
     text-align: center;
     padding: 50px 20px;
@@ -82,7 +82,6 @@ main.produtos {
     color: #555;
 }
 
-/* Chamada para ação */
 .cta {
     background-color: #000000;
     color: #ffffff;
@@ -103,7 +102,7 @@ main.produtos {
 }
 
 .btn-whatsapp {
-    background-color: #0b5c00; /* verde WhatsApp */
+    background-color: #0b5c00;
     color: #fff;
     text-decoration: none;
     padding: 15px 25px;
@@ -127,37 +126,122 @@ footer {
 }
 
 .Banner {
-  display: block; 
+    display: block;
+    padding: 20px;
+    text-align: center;
 }
 
 .Banner img {
-display: flex;
-margin: 100px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 10px;
 }
 
 .Banner h2 {
-font-family: dancing script, cursive;
- text-align: center;
- font-size: 3em;
- color:#0b5c00;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3em;
+    color: #0b5c00;
+    margin-top: 20px;
 }
+
+/* Responsividade */
 @media (max-width: 768px) {
-  .Banner h2 {
-    font-size: 1.5rem;
-  }
+    header.header-banner {
+        padding: 30px 15px;
+    }
+
+    header.header-banner h1 {
+        font-size: 2.2em;
+    }
+
+    header.header-banner p {
+        font-size: 1em;
+    }
+
+    .apresentacao h2 {
+        font-size: 1.7em;
+    }
+
+    .apresentacao p {
+        font-size: 1em;
+    }
+
+    .cta h2 {
+        font-size: 1.7em;
+    }
+
+    .cta p {
+        font-size: 1em;
+    }
+
+    .btn-whatsapp {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+
+    .Banner h2 {
+        font-size: 1.8rem;
+    }
 }
 
-/* Responsividade para celulares */
 @media (max-width: 480px) {
-  .Banner {
-    padding: 10px;
-  }
+    header.header-banner {
+        padding: 25px 10px;
+    }
 
-  .Banner h2 {
-    font-size: 1.2rem;
-  }
+    header.header-banner h1 {
+        font-size: 1.8em;
+    }
 
-  .Banner img {
-    border-radius: 5px;
-  }
+    header.header-banner p {
+        font-size: 0.95em;
+    }
+
+    .apresentacao {
+        padding: 0 10px;
+    }
+
+    .apresentacao h2 {
+        font-size: 1.5em;
+    }
+
+    .apresentacao p {
+        font-size: 0.95em;
+    }
+
+    .cta {
+        padding: 30px 15px;
+    }
+
+    .cta h2 {
+        font-size: 1.5em;
+    }
+
+    .cta p {
+        font-size: 1em;
+    }
+
+    .btn-whatsapp {
+        font-size: 0.95em;
+        padding: 10px 18px;
+    }
+
+    .Banner {
+        padding: 10px;
+    }
+
+    .Banner h2 {
+        font-size: 1.3rem;
+    }
+
+    .Banner img {
+        border-radius: 5px;
+    }
+
+    footer {
+        font-size: 0.85em;
+    }
 }
+
