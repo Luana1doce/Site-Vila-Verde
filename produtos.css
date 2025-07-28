@@ -243,5 +243,12 @@ footer {
     footer {
         font-size: 0.85em;
     }
+    @media (max-width: 480px) {
+  .Banner img {
+    max-width: 90%;
+    border-radius: 5px;
+  }
+}
+
 }
 
