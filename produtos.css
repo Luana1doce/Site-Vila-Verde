@@ -262,6 +262,32 @@ footer {
     -webkit-box-orient: vertical;
   }
 }
+    @media (max-width: 768px) {
+  .categorias {
+    grid-template-columns: 1fr !important;
+  }
+
+  .categoria p {
+    font-size: 1em;
+    line-height: 1.5;
+    max-height: 4.5em; /* limita a 3 linhas aprox. */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .categoria h3 {
+    font-size: 1.3em;
+  }
+
+  .categoria img {
+    max-height: 180px;
+    object-fit: cover;
+  }
+}
+
 
 
 }
