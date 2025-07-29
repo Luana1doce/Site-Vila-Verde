@@ -249,6 +249,20 @@ footer {
     border-radius: 5px;
   }
 }
+    /* Ajuste da descrição longa em celulares */
+@media (max-width: 480px) {
+  .categoria p {
+    font-size: 0.9em;
+    line-height: 1.4;
+    max-height: 4.2em; /* aproximadamente 3 linhas */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* exibe só 3 linhas */
+    -webkit-box-orient: vertical;
+  }
+}
+
 
 }
 
