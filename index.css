@@ -407,16 +407,19 @@ h4 { font-size: 1.4em; color: #fff; }
   }
 }
 .instagram-icon img {
-  width: 20px;  /* tamanho menor */
+  width: 20px;
   height: 20px;
+  max-width: 20px;
+  max-height: 20px;
   vertical-align: middle;
-  margin-left: 10px; /* espaço antes do ícone */
+  margin-left: 10px;
   transition: transform 0.2s ease;
 }
 
 .instagram-icon:hover img {
   transform: scale(1.1);
 }
+
 
 @media (max-width: 480px) {
   h1 { font-size: 2em; }
@@ -435,6 +438,7 @@ h4 { font-size: 1.4em; color: #fff; }
   }
   
 }
+
 
 
 
