@@ -406,6 +406,17 @@ h4 { font-size: 1.4em; color: #fff; }
     font-size: 1em;
   }
 }
+.instagram-icon img {
+  width: 20px;  /* tamanho menor */
+  height: 20px;
+  vertical-align: middle;
+  margin-left: 10px; /* espaço antes do ícone */
+  transition: transform 0.2s ease;
+}
+
+.instagram-icon:hover img {
+  transform: scale(1.1);
+}
 
 @media (max-width: 480px) {
   h1 { font-size: 2em; }
@@ -423,18 +434,8 @@ h4 { font-size: 1.4em; color: #fff; }
     width: 100%;
   }
   
-.instagram-icon img {
-  width: 20px;  /* tamanho menor */
-  height: 20px;
-  vertical-align: middle;
-  margin-left: 10px; /* espaço antes do ícone */
-  transition: transform 0.2s ease;
 }
 
-.instagram-icon:hover img {
-  transform: scale(1.1);
-}
-}
 
 
 
