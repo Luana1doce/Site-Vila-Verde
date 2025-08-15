@@ -310,7 +310,7 @@ width: 40px;
   #cookie-box {
     right: 10px;
     bottom: 10px;
-    max-width: 90vw;
+    max-width: 80vw;
     padding: 15px;
   }
 }
@@ -355,8 +355,8 @@ width: 40px;
 @media (max-width: 400px) {
   .instagram-box {
     left: 10px;
-    bottom: 120px; /* altura aproximada do cookie-box + espaço de respiro */
-    max-width: 90vw;
+    bottom: 140px; /* altura aproximada do cookie-box + espaço de respiro */
+    max-width: 80vw;
     padding: 15px;}
 }
 
@@ -423,6 +423,7 @@ h4 { font-size: 1.4em; color: #fff; }
     width: 100%;
   }
 }
+
 
 
 
