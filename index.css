@@ -354,11 +354,10 @@ width: 40px;
 /* Responsividade para telas pequenas */
 @media (max-width: 400px) {
   .instagram-box {
-    right: 10px;
-    bottom: 10px;
+    left: 10px;
+    bottom: 120px; /* altura aproximada do cookie-box + espaço de respiro */
     max-width: 90vw;
-    padding: 15px;
-  }
+    padding: 15px;}
 }
 
 /* TÍTULOS */
@@ -424,6 +423,7 @@ h4 { font-size: 1.4em; color: #fff; }
     width: 100%;
   }
 }
+
 
 
 
