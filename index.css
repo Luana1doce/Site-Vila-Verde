@@ -422,18 +422,29 @@ h4 { font-size: 1.4em; color: #fff; }
   .promo-card {
     width: 100%;
   }
-  .instagram-icon img {
-  width: 24px;  /* tamanho do ícone */
-  height: 24px;
+  nav {
+  background-color: #0b5c00;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* garante alinhamento vertical */
+  flex-wrap: nowrap; /* impede quebra de linha */
+  padding: 20px 0;
+  font-size: 1.2em;
+}
+
+.instagram-icon img {
+  width: 20px;  /* tamanho menor */
+  height: 20px;
   vertical-align: middle;
+  margin-left: 10px; /* espaço antes do ícone */
   transition: transform 0.2s ease;
 }
 
 .instagram-icon:hover img {
   transform: scale(1.1);
 }
-
 }
+
 
 
 
